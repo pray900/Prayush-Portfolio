@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayush Shrestha - Software Engineer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #1a1a1a;
+            --accent-green: #00ff88;
+            --accent-blue: #00d4ff;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border-color: #333;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Matrix Background Animation */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            padding: 1rem 2rem;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-green);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            min-height: 100vh;
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .terminal-window {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 0.5rem;
+            margin-right: 1rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red {
+            background: #ff5f56;
+        }
+
+        .dot.yellow {
+            background: #ffbd2e;
+        }
+
+        .dot.green {
+            background: #27ca3f;
+        }
+
+        .terminal-title {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .ascii-art {
+            font-size: 0.6rem;
+            color: var(--accent-green);
+            line-height: 1;
+            margin-bottom: 2rem;
+        }
+
+        .typing-text {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: var(--accent-green);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .hero-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 1rem auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--secondary-bg);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--accent-green);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title::before {
+            content: "// ";
+            color: var(--text-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .code-block {
+            background: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        .comment {
+            color: var(--text-secondary);
+        }
+
+        .string {
+            color: var(--accent-blue);
+        }
+
+        .keyword {
+            color: var(--accent-green);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        /* Experience Section */
+        .experience {
+            background: var(--secondary-bg);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 3rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-content {
+            background: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            width: calc(50% - 2rem);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .job-title {
+            color: var(--accent-green);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .duration {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.15);
+        }
+
+        .blog-card {
+            background: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.15);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            color: var(--accent-green);
+            font-size: 1.3rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--accent-green);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--primary-bg);
+            color: var(--accent-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent-blue);
+        }
+
+        .blog-tag {
+            background: var(--secondary-bg);
+            color: var(--accent-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent-blue);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--secondary-bg);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+        }
+
+        .contact-item h3 {
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-green);
+        }
+
+        /* Blog Section */
+        .blog {
+            background: var(--secondary-bg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .timeline::before {
+                left: 2rem;
+            }
+
+            .timeline-content {
+                width: calc(100% - 4rem);
+                margin-left: 4rem !important;
+                margin-right: 0 !important;
+            }
+
+            .timeline-dot {
+                left: 2rem;
+            }
+
+            .ascii-art {
+                font-size: 0.4rem;
+            }
+
+            .typing-text {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            animation: glitch1 0.5s infinite linear alternate-reverse;
+            color: var(--accent-blue);
+            z-index: -1;
+        }
+
+        .glitch::after {
+            animation: glitch2 0.5s infinite linear alternate-reverse;
+            color: var(--accent-green);
+            z-index: -2;
+        }
+
+        @keyframes glitch1 {
+            0% {
+                clip-path: inset(0 0 0 0);
+            }
+
+            5% {
+                clip-path: inset(0.1em 0 0.9em 0);
+            }
+
+            10% {
+                clip-path: inset(0.3em 0 0.7em 0);
+            }
+
+            15% {
+                clip-path: inset(0.2em 0 0.8em 0);
+            }
+
+            20% {
+                clip-path: inset(0.6em 0 0.4em 0);
+            }
+
+            25% {
+                clip-path: inset(0.1em 0 0.9em 0);
+            }
+
+            100% {
+                clip-path: inset(0.1em 0 0.9em 0);
+            }
+        }
+
+        @keyframes glitch2 {
+            0% {
+                clip-path: inset(0 0 0 0);
+            }
+
+            5% {
+                clip-path: inset(0.6em 0 0.4em 0);
+            }
+
+            10% {
+                clip-path: inset(0.1em 0 0.9em 0);
+            }
+
+            15% {
+                clip-path: inset(0.8em 0 0.2em 0);
+            }
+
+            20% {
+                clip-path: inset(0.3em 0 0.7em 0);
+            }
+
+            25% {
+                clip-path: inset(0.5em 0 0.5em 0);
+            }
+
+            100% {
+                clip-path: inset(0.5em 0 0.5em 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Matrix Background -->
+    <canvas class="matrix-bg" id="matrix"></canvas>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">prayush.exe</div>
+            <ul class="nav-links">
+                <li><a href="#home">home()</a></li>
+                <li><a href="#about">about.md</a></li>
+                <li><a href="#skills">skills.json</a></li>
+                <li><a href="#experience">experience.log</a></li>
+                <li><a href="#projects">projects.repo</a></li>
+                <li><a href="#blogs">blogs.txt</a></li>
+                <li><a href="#contact">contact.sh</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="section hero">
+        <div class="container">
+            <div class="terminal-window fade-in">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="terminal-title">prayush@portfolio:~$</div>
+                </div>
+            <pre class="ascii-art">
+██████╗ ██████╗  █████╗ ██╗   ██╗██╗   ██╗███████╗██╗  ██╗
+██╔══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝██║   ██║██╔════╝██║  ██║
+██████╔╝██████╔╝███████║ ╚████╔╝ ██║   ██║███████╗███████║
+██╔═══╝ ██╔══██╗██╔══██║  ╚██╔╝  ██║   ██║╚════██║██╔══██║
+██║     ██║  ██║██║  ██║   ██║   ╚██████╔╝███████║██║  ██║
+╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚══════╝╚═╝  ╚═╝
+            </pre>
+                <div class="typing-text">
+                    <span id="typing-output"></span>
+                    <span class="cursor"></span>
+                </div>
+                <p class="hero-description">
+                    Dedicated software engineer with 3+ years of experience crafting robust applications.
+                    Specialized in Salesforce development, full-stack solutions, and turning complex problems into
+                    elegant code.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title fade-in">about.md</h2>
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <p>
+                        Currently pursuing my Masters in Information Technology at University of Technology Sydney,
+                        I'm a passionate software engineer who thrives on innovation and problem-solving.
+                    </p>
+                    <p>
+                        With over 3 years of hands-on experience, I've specialized in Salesforce development,
+                        building everything from Lightning Web Components to complex Apex solutions.
+                        I've led teams, mentored junior developers, and consistently delivered high-quality results
+                        while adapting to new technologies.
+                    </p>
+                    <p>
+                        My journey spans from web scraping and data analysis to full-stack development,
+                        always with a focus on creating impactful solutions that align with organizational goals.
+                    </p>
+                </div>
+                <div class="code-block">
+                    <span class="comment">// Developer Profile</span>
+                    <span class="keyword">const</span> prayush = {
+                    <span class="string">"name"</span>: <span class="string">"Prayush Shrestha"</span>,
+                    <span class="string">"role"</span>: <span class="string">"Software Engineer"</span>,
+                    <span class="string">"location"</span>: <span class="string">"Sydney, Australia"</span>,
+                    <span class="string">"experience"</span>: <span class="string">"3+ years"</span>,
+                    <span class="string">"education"</span>: [
+                    <span class="string">"Masters IT @ UTS (Current)"</span>,
+                    <span class="string">"BSc Computing @ London Met"</span>
+                    ],
+                    <span class="string">"specialties"</span>: [
+                    <span class="string">"Salesforce Development"</span>,
+                    <span class="string">"Full-Stack Solutions"</span>,
+                    <span class="string">"Team Leadership"</span>,
+                    <span class="string">"Problem Solving"</span>
+                    ],
+                    <span class="string">"currentFocus"</span>: <span class="string">"Innovation & Impact"</span>
+                    };
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">skills.json</h2>
+            <div class="skills-grid fade-in">
+                <div class="skill-category">
+                    <h3>Salesforce Ecosystem</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Lightning Web Components</span>
+                        <span class="skill-tag">Aura Components</span>
+                        <span class="skill-tag">Apex</span>
+                        <span class="skill-tag">Visualforce</span>
+                        <span class="skill-tag">Triggers</span>
+                        <span class="skill-tag">Flow Builder</span>
+                        <span class="skill-tag">Process Builder</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">D3.js</span>
+                        <span class="skill-tag">Responsive Design</span>
+                        <span class="skill-tag">UI/UX Testing</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend & Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">API Development</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Methodologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">Bitbucket</span>
+                        <span class="skill-tag">JIRA</span>
+                        <span class="skill-tag">Confluence</span>
+                        <span class="skill-tag">Agile</span>
+                        <span class="skill-tag">Waterfall</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Data & Analytics</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Web Scraping</span>
+                        <span class="skill-tag">BeautifulSoup</span>
+                        <span class="skill-tag">Selenium</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">Data Analysis</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Leadership & Soft Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Team Management</span>
+                        <span class="skill-tag">Mentoring</span>
+                        <span class="skill-tag">Technical Communication</span>
+                        <span class="skill-tag">Risk Mitigation</span>
+                        <span class="skill-tag">Project Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section experience">
+        <div class="container">
+            <h2 class="section-title fade-in">experience.log</h2>
+            <div class="timeline fade-in">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="job-title">Software Engineer (Business Analyst)</div>
+                        <div class="company">ComplianceQuest</div>
+                        <div class="duration">March 2022 - December 2024</div>
+                        <ul>
+                            <li>Developed Salesforce applications using LWC, Aura, Apex, and Visualforce</li>
+                            <li>Enhanced application security and user interface usability</li>
+                            <li>Managed a team of 5 developers and mentored new hires</li>
+                            <li>Provided technical support and documented workflows</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="job-title">Web Scraping Internship (Data Analyst)</div>
+                        <div class="company">Grow by Data</div>
+                        <div class="duration">November 2021 - February 2022</div>
+                        <ul>
+                            <li>Collected and analyzed online data using BeautifulSoup and Selenium</li>
+                            <li>Navigated CAPTCHA challenges through advanced coding techniques</li>
+                            <li>Assisted in managing and reviewing team projects</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="job-title">Software Engineering Internship</div>
+                        <div class="company">Nepotech</div>
+                        <div class="duration">July 2021 - October 2021</div>
+                        <ul>
+                            <li>Implemented data visualization application using D3.js</li>
+                            <li>Created web application with Django, JavaScript, PostgreSQL</li>
+                            <li>Organized daily stand-ups and knowledge-sharing sessions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="job-title">Quality Assurance Internship</div>
+                        <div class="company">Islington College</div>
+                        <div class="duration">February 2021 - May 2021</div>
+                        <ul>
+                            <li>Executed comprehensive UI/UX testing</li>
+                            <li>Validated functionality and performance optimization</li>
+                            <li>Developed test cases and documented bugs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">projects.repo</h2>
+            <div class="projects-grid fade-in" id="projects-container">
+                <!-- GitHub projects will be loaded here -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Chat App</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/pray900/JS_Projects" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                    <p>A real-time chat application that enables users to send instant messages, create conversations, and stay connected seamlessly. Built with a focus on performance and usability, it supports responsive design, secure authentication, and smooth message delivery.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Express.js</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">eCommerce webapp</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/pray900/Java_Projects" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                    <p>A full-stack eCommerce web application that allows users to browse products, add items to cart, and complete secure purchases. Designed with a responsive UI and optimized performance, it includes features like user authentication, product management, and order processing.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Boot</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">AI/ML</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/pray900/AI-ML" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                    <p>Implemented two classification models—Support Vector Machine (SVM) and Neural Network—for handwritten mathematical symbol recognition. The models are trained and evaluated using multiple feature extraction techniques, including Histogram of Oriented Gradients (HOG), Local Binary Patterns (LBP), and raw pixel inputs. The implementation includes preprocessing, feature engineering, model training, and performance comparison to assess the effectiveness of different feature representations.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Numpy</span>
+                        <span class="tech-tag">tensorflow</span>
+                        <span class="tech-tag">Matplotlib</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Blog Section -->
+    <section id="blogs" class="section blog">
+        <div class="container">
+            <h2 class="section-title fade-in">blogs.txt</h2>
+            <div class="projects-grid fade-in" id="projects-container">
+                <!-- Blogs will be loaded here -->
+                <div class="blog-card">
+                    <div class="project-header">
+                        <h3 class="project-title">SQL Injection</h3>
+                        <div class="project-links">
+                            <a href="https://medium.com/@prayush900/sql-injection-guide-1fa971d14647" class="project-link">Medium →</a>
+                        </div>
+                    </div>
+                    <p>This project demonstrates a SQL Injection (SQLi) vulnerability in a web application login system, showing how improper input validation and non-parameterized queries can be exploited to bypass authentication. It highlights how crafted inputs (e.g., ' OR '1'='1) can manipulate SQL logic, emphasizing the importance of secure coding practices such as input sanitization and prepared statements.</p>
+                    <div class="project-tech">
+                        <span class="blog-tag">SQL</span>
+                        <span class="blog-tag">PHP</span>
+                    </div>
+                </div>      
+                <div class="blog-card">
+                    <div class="project-header">
+                        <h3 class="project-title">John the Ripper</h3>
+                        <div class="project-links">
+                            <a href="https://medium.com/@prayush900/john-the-ripper-guide-b1d2ee1a63c4" class="project-link">Medium →</a>
+                        </div>
+                    </div>
+                    <p>This project demonstrates the use of John the Ripper (JtR), an open-source password cracking tool, to identify weak passwords through techniques like single crack, wordlist, and incremental (brute-force) modes. It highlights how different strategies and wordlist mangling can efficiently recover passwords from hashed data, emphasizing the importance of strong password practices.</p>
+                    <div class="project-tech">
+                        <span class="blog-tag">John the Ripper</span>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Leetcode — Rest and Spread syntax</h3>
+                        <div class="project-links">
+                            <a href="https://medium.com/@prayush900/leetcode-rest-and-spread-syntax-516af252d033" class="project-link">Medium →</a>
+                        </div>
+                    </div>
+                    <p>This explains JavaScript rest (...args) and spread (...) syntax—where rest collects multiple function arguments into an array, and spread expands arrays or objects into individual elements. It also highlights their differences in usage, particularly how spread enables copying and merging without mutating original data, improving memory handling and immutability.</p>
+                    <div class="project-tech">
+                        <span class="blog-tag">Leetcode</span>
+                        <span class="blog-tag">JavaScript</span>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Asynchronous JS</h3>
+                        <div class="project-links">
+                            <a href="https://medium.com/@prayush900/asynchronous-js-38571d5459da" class="project-link">Medium →</a>
+                        </div>
+                    </div>
+                    <p>This explains asynchronous programming in JavaScript and how Promises handle non-blocking operations using states like pending, fulfilled, and rejected. It also covers Promise chaining, utility methods (like Promise.all), and how async/await provides a cleaner syntax for working with Promises.</p>
+                    <div class="project-tech">
+                        <span class="blog-tag">Leetcode</span>
+                        <span class="blog-tag">JavaScript</span>
+                    </div>
+                </div>       
+                <div class="blog-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Leetcode — Rabbit hole 2</h3>
+                        <div class="project-links">
+                            <a href="https://medium.com/@prayush900/leetcode-rabbit-hole-2-9495f7c90d62" class="project-link">Medium →</a>
+                        </div>
+                    </div>
+                    <p>This explains JavaScript methods, constructors, and prototypes: functions are first-class objects, allowing them to be stored, passed, and extended like objects. It covers different function types, this behavior (regular vs. arrow functions), constructor functions, class syntax, and how .prototype enables shared methods across instances to optimize memory and support inheritance.</p>
+                    <div class="project-tech">
+                        <span class="blog-tag">Leetcode</span>
+                        <span class="blog-tag">JavaScript</span>
+                    </div>
+                </div>      
+                <div class="blog-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Leetcode — Rabbit hole 1</h3>
+                        <div class="project-links">
+                            <a href="https://medium.com/@prayush900/leetcode-rabbit-hole-1-4c86abc4278f" class="project-link">Medium →</a>
+                        </div>
+                    </div>
+                    <p>i++ and i = i + 1 both increment a variable by 1, but differ in behavior: i++ is an expression that returns the original value before incrementing, while i = i + 1 is a statement that updates the variable immediately without returning a value.</p>
+                    <div class="project-tech">
+                        <span class="blog-tag">Leetcode</span>
+                        <span class="blog-tag">JavaScript</span>
+                    </div>
+                </div>    
+                <div class="blog-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Leetcode — Getting to know Big O notation</h3>
+                        <div class="project-links">
+                            <a href="https://medium.com/@prayush900/prashel-901950535214" class="project-link">Medium →</a>
+                        </div>
+                    </div>
+                    <p>This article explains Big O notation and its importance in analyzing algorithm efficiency, covering common complexities from O(1) to O(n!). It also compares arrays and hashmaps, showing how hashmaps trade extra memory for faster key-based access, while arrays are better when order matters or duplicates are needed.</p>
+                    <div class="project-tech">
+                        <span class="blog-tag">Leetcode</span>
+                        <span class="blog-tag">JavaScript</span>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">contact.sh</h2>
+            <div class="projects-grid fade-in" id="projects-container">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Gmail: <span class="tech-tag">prayush900@gmail.com</span></h3>
+                        <h3 class="project-title">LinkedIn: <span class="tech-tag"><a href="https://www.linkedin.com/in/prayush-shrestha-syd/" class="project-link">Prayush Bahadur Shrestha</a></span></h3>
+                        <h3 class="project-title">Location: <span class="tech-tag">Sydney, Australia</span></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
