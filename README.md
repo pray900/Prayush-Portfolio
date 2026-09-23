@@ -8,15 +8,15 @@ A single-page developer portfolio with a terminal/matrix aesthetic, built as one
 
 The site presents my background as a software engineer — Salesforce development, full-stack work, and data/ML projects — across seven sections, each named after a file or command to match the terminal theme:
 
-| Section | Contents |
-| --- | --- |
-| `home()` | ASCII banner and intro inside a terminal window |
-| `about.md` | Bio alongside a syntax-highlighted "developer profile" code block |
-| `skills.json` | Six skill categories as tag grids |
-| `experience.log` | Work history as a vertical timeline |
-| `projects.repo` | Project cards with GitHub and live-demo links |
-| `blogs.txt` | Links to my Medium articles |
-| `contact.sh` | Email, LinkedIn, and location |
+| Section          | Contents                                                          |
+| ---------------- | ----------------------------------------------------------------- |
+| `home()`         | ASCII banner and intro inside a terminal window                   |
+| `about.md`       | Bio alongside a syntax-highlighted "developer profile" code block |
+| `skills.json`    | Six skill categories as tag grids                                 |
+| `experience.log` | Work history as a vertical timeline                               |
+| `projects.repo`  | Project cards with GitHub and live-demo links                     |
+| `blogs.txt`      | Links to my Medium articles                                       |
+| `contact.sh`     | Email, LinkedIn, and location                                     |
 
 ## Stack
 
@@ -70,10 +70,6 @@ All content is plain markup in `index.html`, so updates are copy-and-paste edits
 - **New role** — duplicate a `<div class="timeline-item">` block in the `#experience` section.
 - **New skill group** — duplicate a `<div class="skill-category">` block in the `#skills` section.
 - **Colors** — edit the `:root` custom properties near the top of the `<style>` block.
-
-## Notes
-
-The hero section includes a `<canvas id="matrix">` background and a `<span id="typing-output">` placeholder for a typing animation, but the page currently ships no JavaScript, so both render empty. Adding a small inline `<script>` would bring those two effects to life; the CSS for them is already in place.
 
 ## Contact
 
